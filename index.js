@@ -125,5 +125,7 @@ sysconf._SC_XOPEN_UNIX = 121;
 sysconf._SC_XOPEN_VERSION = 122;
 sysconf._SC_NPROCESSORS_CONF = 123;
 sysconf._SC_NPROCESSORS_ONLN = 124;
+sysconf._SC_PHYS_PAGES = 125;
+sysconf._SC_AVPHYS_PAGES = 126;
 
 module.exports = sysconf;
