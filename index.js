@@ -123,5 +123,7 @@ sysconf._SC_XOPEN_SHM = 119;
 sysconf._SC_XOPEN_STREAMS = 120;
 sysconf._SC_XOPEN_UNIX = 121;
 sysconf._SC_XOPEN_VERSION = 122;
+sysconf._SC_NPROCESSORS_CONF = 123;
+sysconf._SC_NPROCESSORS_ONLN = 124;
 
 module.exports = sysconf;

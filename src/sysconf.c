@@ -2,9 +2,9 @@
 
 #include <unistd.h>
 
-#define NAMES_SIZE 123
+#define NAMES_SIZE 125
 
-int32_t defaultNames[NAMES_SIZE] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+int32_t defaultNames[NAMES_SIZE] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 
 napi_value createFalse(napi_env env){
         napi_value result;
@@ -28,7 +28,7 @@ napi_value get(napi_env env, napi_callback_info info){
         if(index < 0 || index >= NAMES_SIZE){
                 return createFalse(env);
         }
-        
+
         int32_t name = defaultNames[index];
         if(name == -1) {
                 return createFalse(env);
@@ -409,6 +409,12 @@ napi_value Init (napi_env env, napi_value exports) {
         #endif
         #ifdef _SC_XOPEN_VERSION
         defaultNames[122] = _SC_XOPEN_VERSION;
+        #endif
+        #ifdef _SC_NPROCESSORS_CONF
+        defaultNames[123] = _SC_NPROCESSORS_CONF;
+        #endif
+        #ifdef _SC_NPROCESSORS_ONLN
+        defaultNames[124] = _SC_NPROCESSORS_ONLN;
         #endif
         napi_property_descriptor allDesc[] = {
                 {"get", 0, get, 0, 0, 0, napi_default, 0}
