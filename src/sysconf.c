@@ -8,8 +8,7 @@ int32_t defaultNames[NAMES_SIZE] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
 
 napi_value createFalse(napi_env env){
         napi_value result;
-        napi_create_int32(env, 0, &result);
-        napi_coerce_to_bool(env, result, &result);
+        napi_get_boolean(env, false, &result);
         return result;
 }
 
