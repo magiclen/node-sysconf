@@ -1,4 +1,4 @@
-const sysconf = require('bindings')('sysconf');
+const sysconf = require("bindings")("sysconf");
 
 sysconf._SC_AIO_LISTIO_MAX = 0;
 sysconf._SC_AIO_MAX = 1;
