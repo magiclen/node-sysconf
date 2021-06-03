@@ -123,8 +123,6 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
         "_SC_THREAD_PRIO_PROTECT" => libc::_SC_THREAD_PRIO_PROTECT,
         "_SC_THREAD_PRIORITY_SCHEDULING" => libc::_SC_THREAD_PRIORITY_SCHEDULING,
         "_SC_THREAD_PROCESS_SHARED" => libc::_SC_THREAD_PROCESS_SHARED,
-        "_SC_THREAD_ROBUST_PRIO_INHERIT" => libc::_SC_THREAD_ROBUST_PRIO_INHERIT,
-        "_SC_THREAD_ROBUST_PRIO_PROTECT" => libc::_SC_THREAD_ROBUST_PRIO_PROTECT,
         "_SC_THREAD_SAFE_FUNCTIONS" => libc::_SC_THREAD_SAFE_FUNCTIONS,
         "_SC_THREAD_SPORADIC_SERVER" => libc::_SC_THREAD_SPORADIC_SERVER,
         "_SC_THREADS" => libc::_SC_THREADS,
@@ -140,10 +138,7 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
         "_SC_TRACE_USER_EVENT_MAX" => libc::_SC_TRACE_USER_EVENT_MAX,
         "_SC_TYPED_MEMORY_OBJECTS" => libc::_SC_TYPED_MEMORY_OBJECTS,
         "_SC_VERSION" => libc::_SC_VERSION,
-        "_SC_V7_ILP32_OFF32" => libc::_SC_V7_ILP32_OFF32,
-        "_SC_V7_ILP32_OFFBIG" => libc::_SC_V7_ILP32_OFFBIG,
         "_SC_V7_LP64_OFF64" => libc::_SC_V7_LP64_OFF64,
-        "_SC_V7_LPBIG_OFFBIG" => libc::_SC_V7_LPBIG_OFFBIG,
         "_SC_V6_ILP32_OFF32" => libc::_SC_V6_ILP32_OFF32,
         "_SC_V6_ILP32_OFFBIG" => libc::_SC_V6_ILP32_OFFBIG,
         "_SC_V6_LP64_OFF64" => libc::_SC_V6_LP64_OFF64,
@@ -174,27 +169,53 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
         "_SC_XOPEN_VERSION" => libc::_SC_XOPEN_VERSION,
     };
 
-    #[cfg(target_os = "linux")]
-        {
-            export_const! {
-                cx;
-                "_SC_PHYS_PAGES" => libc::_SC_PHYS_PAGES,
-                "_SC_AVPHYS_PAGES" => libc::_SC_AVPHYS_PAGES,
-                "_SC_NPROCESSORS_CONF" => libc::_SC_NPROCESSORS_CONF,
-                "_SC_NPROCESSORS_ONLN" => libc::_SC_NPROCESSORS_ONLN,
-            }
+    #[cfg(all(unix, not(target_os = "macos")))]
+    {
+        export_const! {
+            cx;
+            "_SC_THREAD_ROBUST_PRIO_INHERIT" => libc::_SC_THREAD_ROBUST_PRIO_INHERIT,
+            "_SC_THREAD_ROBUST_PRIO_PROTECT" => libc::_SC_THREAD_ROBUST_PRIO_PROTECT,
+            "_SC_V7_ILP32_OFF32" => libc::_SC_V7_ILP32_OFF32,
+            "_SC_V7_ILP32_OFFBIG" => libc::_SC_V7_ILP32_OFFBIG,
+            "_SC_V7_LPBIG_OFFBIG" => libc::_SC_V7_LPBIG_OFFBIG,
         }
+    }
 
     #[cfg(target_os = "macos")]
-        {
-            export_const! {
-                cx;
-                "_SC_PHYS_PAGES" => libc::_SC_PHYS_PAGES,
-                "_SC_AVPHYS_PAGES" => -1,
-                "_SC_NPROCESSORS_CONF" => libc::_SC_NPROCESSORS_CONF,
-                "_SC_NPROCESSORS_ONLN" => libc::_SC_NPROCESSORS_ONLN,
-            }
+    {
+        export_const! {
+            cx;
+            "_SC_THREAD_ROBUST_PRIO_INHERIT" => -1,
+            "_SC_THREAD_ROBUST_PRIO_PROTECT" => -1,
+            "_SC_V7_ILP32_OFF32" => -1,
+            "_SC_V7_ILP32_OFFBIG" => -1,
+            "_SC_V7_LPBIG_OFFBIG" => -1,
         }
+    }
+
+    // -----
+
+    #[cfg(target_os = "linux")]
+    {
+        export_const! {
+            cx;
+            "_SC_PHYS_PAGES" => libc::_SC_PHYS_PAGES,
+            "_SC_AVPHYS_PAGES" => libc::_SC_AVPHYS_PAGES,
+            "_SC_NPROCESSORS_CONF" => libc::_SC_NPROCESSORS_CONF,
+            "_SC_NPROCESSORS_ONLN" => libc::_SC_NPROCESSORS_ONLN,
+        }
+    }
+
+    #[cfg(target_os = "macos")]
+    {
+        export_const! {
+            cx;
+            "_SC_PHYS_PAGES" => libc::_SC_PHYS_PAGES,
+            "_SC_AVPHYS_PAGES" => -1,
+            "_SC_NPROCESSORS_CONF" => libc::_SC_NPROCESSORS_CONF,
+            "_SC_NPROCESSORS_ONLN" => libc::_SC_NPROCESSORS_ONLN,
+        }
+    }
 
     Ok(())
 }
