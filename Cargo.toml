@@ -1,0 +1,26 @@
+[package]
+name = "node-sysconf"
+version = "2.0.0"
+edition = "2018"
+repository = "https://github.com/magiclen/node-sysconf"
+homepage = "https://magiclen.org/node-sysconf/"
+keywords = ["node.js", "sysconf"]
+categories = []
+description = "Get configurable system variables."
+license = "MIT"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+[dependencies]
+libc = "0.2"
+
+[dependencies.neon]
+version = "0.8"
+default-features = false
+features = ["napi-6"]

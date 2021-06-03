@@ -1,12 +1,15 @@
 {
   "name": "node-sysconf",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Get configurable system variables.",
-  "main": "src/lib.js",
-  "typings": "index.d.ts",
+  "main": "lib/lib.js",
+  "typings": "lib/lib.d.ts",
   "scripts": {
-    "test": "mocha tests/**/*.test.js",
-    "build": "node-gyp rebuild",
+    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "dev": "tsc -w",
+    "native-build": "cargo-cp-artifact -nc index.node -- cargo build --release --message-format=json-render-diagnostics",
+    "build": "npm run native-build && tsc",
+    "install": "npm run native-build",
     "prepare": "npm run build",
     "prepublishOnly": "npm run test"
   },
@@ -18,7 +21,7 @@
     "url": "git+https://github.com/magiclen/node-sysconf.git"
   },
   "keywords": [
-    "nodejs",
+    "node.js",
     "sysconf"
   ],
   "author": "Magic Len <len@magiclen.org> (https://magiclen.org)",
@@ -28,11 +31,18 @@
   },
   "homepage": "https://magiclen.org/node-sysconf/",
   "dependencies": {
-    "bindings": "^1.3.0"
+    "cargo-cp-artifact": "^0.1"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "@types/chai": "^4.2.18",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^15.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "chai": "^4.3.4",
     "eslint": "^7.27.0",
-    "mocha": "^8.4.0"
+    "mocha": "^8.4.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
   }
 }

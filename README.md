@@ -3,12 +3,16 @@ sysconf For Node.js
 
 [![CI](https://github.com/magiclen/node-sysconf/actions/workflows/ci.yml/badge.svg)](https://github.com/magiclen/node-sysconf/actions/workflows/ci.yml)
 
+Get configurable system variables.
+
+You need to set up the Rust development environment: [rustup](https://rustup.rs/)
+
 ## Usage
 
 You can use `get` function to get the value of system variables.
 
 ```javascript
-const result = sysconf.get(sysconf._SC_PAGE_SIZE); // 4096
+const result = sysconf.get(sysconf.Name._SC_PAGE_SIZE); // 4096
 ```
 
 ## License
