@@ -138,7 +138,6 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
         "_SC_TRACE_USER_EVENT_MAX" => libc::_SC_TRACE_USER_EVENT_MAX,
         "_SC_TYPED_MEMORY_OBJECTS" => libc::_SC_TYPED_MEMORY_OBJECTS,
         "_SC_VERSION" => libc::_SC_VERSION,
-        "_SC_V7_LP64_OFF64" => libc::_SC_V7_LP64_OFF64,
         "_SC_V6_ILP32_OFF32" => libc::_SC_V6_ILP32_OFF32,
         "_SC_V6_ILP32_OFFBIG" => libc::_SC_V6_ILP32_OFFBIG,
         "_SC_V6_LP64_OFF64" => libc::_SC_V6_LP64_OFF64,
@@ -177,6 +176,7 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
             "_SC_THREAD_ROBUST_PRIO_PROTECT" => libc::_SC_THREAD_ROBUST_PRIO_PROTECT,
             "_SC_V7_ILP32_OFF32" => libc::_SC_V7_ILP32_OFF32,
             "_SC_V7_ILP32_OFFBIG" => libc::_SC_V7_ILP32_OFFBIG,
+            "_SC_V7_LP64_OFF64" => libc::_SC_V7_LP64_OFF64,
             "_SC_V7_LPBIG_OFFBIG" => libc::_SC_V7_LPBIG_OFFBIG,
         }
     }
@@ -189,6 +189,7 @@ fn main(mut cx: ModuleContext) -> NeonResult<()> {
             "_SC_THREAD_ROBUST_PRIO_PROTECT" => -1,
             "_SC_V7_ILP32_OFF32" => -1,
             "_SC_V7_ILP32_OFFBIG" => -1,
+            "_SC_V7_LP64_OFF64" => -1,
             "_SC_V7_LPBIG_OFFBIG" => -1,
         }
     }
