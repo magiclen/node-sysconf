@@ -16,6 +16,9 @@
   "engines": {
     "node": ">=12"
   },
+  "os": [
+    "!win32"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/magiclen/node-sysconf.git"
