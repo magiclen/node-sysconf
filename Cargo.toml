@@ -1,6 +1,6 @@
 [package]
 name = "node-sysconf"
-version = "2.0.0"
+version = "2.0.2"
 edition = "2018"
 repository = "https://github.com/magiclen/node-sysconf"
 homepage = "https://magiclen.org/node-sysconf/"
@@ -21,6 +21,6 @@ codegen-units = 1
 libc = "0.2"
 
 [dependencies.neon]
-version = "0.8"
+version = "0.9"
 default-features = false
 features = ["napi-6"]
