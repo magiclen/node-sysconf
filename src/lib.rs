@@ -1,6 +1,3 @@
-extern crate libc;
-extern crate neon;
-
 use neon::prelude::*;
 
 fn get(mut cx: FunctionContext) -> JsResult<JsValue> {
