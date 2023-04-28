@@ -9,10 +9,12 @@ You need to set up the Rust development environment: [rustup](https://rustup.rs/
 
 ## Usage
 
-You can use `get` function to get the value of system variables.
+You can use `sysconf` function to get the value of system variables.
 
-```javascript
-const result = sysconf.get(sysconf.Name._SC_PAGE_SIZE); // 4096
+```typescript
+import { sysconf, _SC_PAGE_SIZE } from "../src/lib";
+
+const result = sysconf(_SC_PAGE_SIZE); // 4096
 ```
 
 ## License

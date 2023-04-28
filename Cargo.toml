@@ -1,7 +1,9 @@
 [package]
 name = "node-sysconf"
-version = "2.0.3"
+version = "3.0.0"
+authors = ["Magic Len <len@magiclen.org>"]
 edition = "2021"
+rust-version = "1.57"
 repository = "https://github.com/magiclen/node-sysconf"
 homepage = "https://magiclen.org/node-sysconf/"
 keywords = ["node.js", "sysconf"]
@@ -18,9 +20,10 @@ lto = true
 codegen-units = 1
 
 [dependencies]
+napi = "2"
+napi-derive = "2"
+
 libc = "0.2"
 
-[dependencies.neon]
-version = "0.10"
-default-features = false
-features = ["napi-6"]
+[build-dependencies]
+napi-build = "2"
