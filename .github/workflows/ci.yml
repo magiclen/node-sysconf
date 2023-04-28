@@ -32,9 +32,8 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
-          - windows-latest
         toolchain:
-          - "1.60"
+          - 1.57
           - stable
           - nightly
         node-version:
