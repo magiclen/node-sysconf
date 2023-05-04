@@ -1,6 +1,6 @@
 {
   "name": "node-sysconf",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Get configurable system variables.",
   "type": "module",
   "exports": "./lib/lib.js",
