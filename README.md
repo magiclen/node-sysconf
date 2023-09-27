@@ -12,7 +12,7 @@ You need to set up the Rust development environment: [rustup](https://rustup.rs/
 You can use `sysconf` function to get the value of system variables.
 
 ```typescript
-import { sysconf, _SC_PAGE_SIZE } from "../src/lib";
+import { sysconf, _SC_PAGE_SIZE } from "node-sysconf";
 
 const result = sysconf(_SC_PAGE_SIZE); // 4096
 ```
